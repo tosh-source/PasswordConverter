@@ -20,16 +20,18 @@ namespace MainProgram
 
         }
 
-        private static string DecodeBase64(string inputTextInBytes)
+        private static string DecodeFromBase64(string inputTextInBytes)
         {
             var textInByteToString = Convert.FromBase64String(inputTextInBytes);           
             return Encoding.UTF8.GetString(textInByteToString);         //or change "UTF8" with "Unicode (UTF16)"
         }
 
-        private static string EncodeBase64(string inputText)
+        private static string EncodeToBase64(string inputText)
         {
             var inputTextToBytes = Encoding.UTF8.GetBytes(inputText);  //or change "UTF8" with "Unicode (UTF16)"            
             return Convert.ToBase64String(inputTextToBytes);
         }
+
+
     }
 }
