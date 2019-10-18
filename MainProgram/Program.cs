@@ -14,21 +14,22 @@ namespace MainProgram
         {
             //input settings
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;  //independent from PC culture settings
-            Console.OutputEncoding = Encoding.UTF8;
 
             //core 
-            
+
 
         }
 
-        private static void DecodeBase64(String inputText)
+        private static string DecodeBase64(string inputTextInBytes)
         {
-            throw new NotImplementedException();
+            var textInByteToString = Convert.FromBase64String(inputTextInBytes);           
+            return Encoding.UTF8.GetString(textInByteToString);         //or change "UTF8" with "Unicode (UTF16)"
         }
 
-        private static void EncodeBase64()
+        private static string EncodeBase64(string inputText)
         {
-            throw new NotImplementedException();
+            var inputTextToBytes = Encoding.UTF8.GetBytes(inputText);  //or change "UTF8" with "Unicode (UTF16)"            
+            return Convert.ToBase64String(inputTextToBytes);
         }
     }
 }
