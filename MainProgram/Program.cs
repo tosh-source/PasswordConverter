@@ -20,6 +20,19 @@ namespace MainProgram
             var inputFileName = InputFileName();
             var textFromFile = ReadTXTfile(inputFileName);
 
+            var textAsHex = ConverToHex(textFromFile);
+        }
+
+        private static string ConverToHex(string textFromFile)
+        {
+            var hexAsSB = new StringBuilder();
+
+            for (int i = 0; i < textFromFile.Length; i++)
+            {
+                hexAsSB.Append(((int)textFromFile[i]).ToString("X"));  //convert char to int and then to hexadecimal
+            }
+
+            return hexAsSB.ToString();
         }
 
         private static string InputFileName()
@@ -36,6 +49,7 @@ namespace MainProgram
 
             return inputFileName;
         }
+
         private static string ReadTXTfile(string inputFileName)
         {
             var stream = new StreamReader(inputFileName);
