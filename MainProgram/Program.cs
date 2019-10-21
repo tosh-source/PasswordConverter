@@ -21,18 +21,36 @@ namespace MainProgram
             var textFromFile = ReadTXTfile(inputFileName);
 
             var textAsHex = ConverToHex(textFromFile);
+
+            PrintToFile(textAsHex);
         }
 
-        private static string ConverToHex(string textFromFile)
+        private static void PrintToFile(StringBuilder textAsHex)
+        {
+            var outputToText = new StreamWriter("output (base64-to-hex).txt");
+            outputToText.WriteLine(textAsHex);
+            outputToText.Close();
+            
+            var outputToText_Separated = new StreamWriter("output (base64-to-hex_separated).txt");
+            outputToText_Separated.WriteLine(textAsHex.ToString().Replace(" ", ""));
+            outputToText_Separated.Close();
+        }
+
+        private static StringBuilder ConverToHex(string textFromFile)
         {
             var hexAsSB = new StringBuilder();
 
             for (int i = 0; i < textFromFile.Length; i++)
             {
                 hexAsSB.Append(((int)textFromFile[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
+
+                if (i < textFromFile.Length - 1)
+                {
+                    hexAsSB.Append(' ');
+                }
             }
 
-            return hexAsSB.ToString();
+            return hexAsSB;
         }
 
         private static string InputFileName()
