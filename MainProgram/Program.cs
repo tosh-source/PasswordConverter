@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -16,13 +17,16 @@ namespace MainProgram
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;  //independent from PC culture settings
 
             //core 
-            string inputFileName = InputFileName();
+            var inputFileName = InputFileName();
+            var textFromFile = ReadTXTfile(inputFileName);
 
         }
 
         private static string InputFileName()
         {
             string inputFileName = null;
+
+            Console.WriteLine("Text file should be with UTF8 encoding! Otherwise, change the methods DecodeFromBase64 and EncodeToBase64!");
             do
             {
                 Console.Write("Please enter the name of TXT file: ");
@@ -32,7 +36,15 @@ namespace MainProgram
 
             return inputFileName;
         }
+        private static string ReadTXTfile(string inputFileName)
+        {
+            var stream = new StreamReader(inputFileName);
+            var textAsStr = stream.ReadToEnd();
+            stream.Close();
 
+            return textAsStr;
+        }
+    
         private static string DecodeFromBase64(string inputTextInBytes)
         {
             var textInByteToString = Convert.FromBase64String(inputTextInBytes);           
