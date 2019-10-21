@@ -16,8 +16,21 @@ namespace MainProgram
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;  //independent from PC culture settings
 
             //core 
+            string inputFileName = InputFileName();
 
+        }
 
+        private static string InputFileName()
+        {
+            string inputFileName = null;
+            do
+            {
+                Console.Write("Please enter the name of TXT file: ");
+                inputFileName = Console.ReadLine();
+            }
+            while (inputFileName == null || inputFileName == string.Empty);
+
+            return inputFileName;
         }
 
         private static string DecodeFromBase64(string inputTextInBytes)
