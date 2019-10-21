@@ -29,7 +29,7 @@ namespace MainProgram
 
             for (int i = 0; i < textFromFile.Length; i++)
             {
-                hexAsSB.Append(((int)textFromFile[i]).ToString("X"));  //convert char to int and then to hexadecimal
+                hexAsSB.Append(((int)textFromFile[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
             }
 
             return hexAsSB.ToString();
@@ -39,7 +39,7 @@ namespace MainProgram
         {
             string inputFileName = null;
 
-            Console.WriteLine("Text file should be with UTF8 encoding! Otherwise, change the methods DecodeFromBase64 and EncodeToBase64!");
+            Console.WriteLine("Text file should be with UTF8 encoding! Otherwise, change the encoding in methods DecodeFromBase64 and EncodeToBase64!");
             do
             {
                 Console.Write("Please enter the name of TXT file: ");
