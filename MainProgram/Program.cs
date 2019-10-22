@@ -28,11 +28,11 @@ namespace MainProgram
 
         private static void PrintToFile(StringBuilder textAsHex)
         {
-            var outputToText = new StreamWriter("output (base64-to-hex).txt");
+            var outputToText = new StreamWriter("output (base64-to-hex_separated).txt");
             outputToText.WriteLine(textAsHex);
             outputToText.Close();
 
-            var outputToText_Separated = new StreamWriter("output (base64-to-hex_separated).txt");
+            var outputToText_Separated = new StreamWriter("output (base64-to-hex).txt");
             outputToText_Separated.WriteLine(textAsHex.ToString().Replace(" ", ""));
             outputToText_Separated.Close();
         }
