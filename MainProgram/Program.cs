@@ -42,7 +42,7 @@ namespace MainProgram
             do
             {
                 Console.WriteLine(Environment.NewLine + "What to convert? " +
-                                  Environment.NewLine + "1-base64-to-Hex / 2-base64-to-text / 3-plain text-to-Hex");
+                                  Environment.NewLine + "1-base64-to-Hex / 2-base64-to-text / 3-plain_text-to-Hex");
                 choice = int.Parse(Console.ReadLine());
             } while (!(choice >= 1 && choice <= 3));
 
