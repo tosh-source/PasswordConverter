@@ -1,0 +1,20 @@
+﻿Man is distinguished, not only by his reason, but ...			   <- ASCII text
+========================================================================
+TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCAuLi4=   <- base 64
+========================================================================
+
+
+foobar
+=========
+Zm9vYmFy
+=========
+
+
+sso1_9c90b3db-18c6-41d5-902e-9ad58b161524_10.49.24.134_109739851@sip.telenor.se
+================================================================================================================
+c3NvMV85YzkwYjNkYi0xOGM2LTQxZDUtOTAyZS05YWQ1OGIxNjE1MjRfMTAuNDkuMjQuMTM0XzEwOTczOTg1MUBzaXAudGVsZW5vci5zZQ==
+================================================================================================================
+
+=============================================================================================
+c3NvMV85YzkwYjNkYi0xOGM2LTQxZDUtOTAyZS05YWQ1OGIxNjE1MjRfMTAuNDkuMjQuMTM0XzEwOTczOTg1MUBzaXAud   <- --THROWN EXCEPTION--
+=============================================================================================
