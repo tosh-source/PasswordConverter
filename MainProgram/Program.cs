@@ -37,16 +37,47 @@ namespace MainProgram
         }
 
         private static StringBuilder ConverToHex(string textFromFile)
-        {
+        {           
+            int choice;
+            do
+            {
+                Console.WriteLine(Environment.NewLine + "What to convert? " +
+                                  Environment.NewLine + "1-base64-to-Hex / 2-base64-to-text / 3-plain text-to-Hex");
+                choice = int.Parse(Console.ReadLine());
+            } while (!(choice >= 1 && choice <= 3));
+
             var hexAsSB = new StringBuilder();
 
-            for (int i = 0; i < textFromFile.Length; i++)
+            if (choice == 1)
             {
-                hexAsSB.Append(((int)textFromFile[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
-
-                if (i < textFromFile.Length - 1)
+                var base64decoded = Convert.FromBase64String(textFromFile);
+                
+                for (int i = 0; i < base64decoded.Length; i++)
                 {
-                    hexAsSB.Append(' ');
+                    hexAsSB.Append((base64decoded[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
+
+                    if (i < base64decoded.Length - 1)
+                    {
+                        hexAsSB.Append(' ');
+                    }
+                }
+            }
+            else if (choice == 2)
+            {
+                var textInByteToString = Convert.FromBase64String(textFromFile);
+                
+                hexAsSB.Append(Encoding.UTF8.GetString(textInByteToString));  //or change "UTF8" with "Unicode (UTF16)"
+            }
+            else if (choice == 3)
+            {
+                for (int i = 0; i < textFromFile.Length; i++)
+                {
+                    hexAsSB.Append(((int)textFromFile[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
+
+                    if (i < textFromFile.Length - 1)
+                    {
+                        hexAsSB.Append(' ');
+                    }
                 }
             }
 
@@ -79,7 +110,8 @@ namespace MainProgram
     
         private static string DecodeFromBase64(string inputTextInBytes)
         {
-            var textInByteToString = Convert.FromBase64String(inputTextInBytes);           
+            var textInByteToString = Convert.FromBase64String(inputTextInBytes); 
+            
             return Encoding.UTF8.GetString(textInByteToString);         //or change "UTF8" with "Unicode (UTF16)"
         }
     }
