@@ -11,6 +11,7 @@ namespace MainProgram
 {
     class Program
     {
+        private static int choice;
         static void Main(string[] args)
         {
             //input settings
@@ -30,15 +31,14 @@ namespace MainProgram
             var outputToText = new StreamWriter("output (base64-to-hex).txt");
             outputToText.WriteLine(textAsHex);
             outputToText.Close();
-            
+
             var outputToText_Separated = new StreamWriter("output (base64-to-hex_separated).txt");
             outputToText_Separated.WriteLine(textAsHex.ToString().Replace(" ", ""));
             outputToText_Separated.Close();
         }
 
         private static StringBuilder ConverToHex(string textFromFile)
-        {           
-            int choice;
+        {
             do
             {
                 Console.WriteLine(Environment.NewLine + "What to convert? " +
@@ -51,7 +51,7 @@ namespace MainProgram
             if (choice == 1)
             {
                 var base64decoded = Convert.FromBase64String(textFromFile);
-                
+
                 for (int i = 0; i < base64decoded.Length; i++)
                 {
                     hexAsSB.Append((base64decoded[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
@@ -65,7 +65,7 @@ namespace MainProgram
             else if (choice == 2)
             {
                 var textInByteToString = Convert.FromBase64String(textFromFile);
-                
+
                 hexAsSB.Append(Encoding.UTF8.GetString(textInByteToString));  //or change "UTF8" with "Unicode (UTF16)"
             }
             else if (choice == 3)
@@ -88,7 +88,7 @@ namespace MainProgram
         {
             string inputFileName = null;
 
-            Console.WriteLine("Text file should be with UTF8 encoding! Otherwise, change the encoding in methods DecodeFromBase64 and EncodeToBase64!");
+            Console.WriteLine("Text file should be with UTF8 encoding!");
             do
             {
                 Console.Write("Please enter the name of TXT file: ");
@@ -106,13 +106,6 @@ namespace MainProgram
             stream.Close();
 
             return textAsStr;
-        }
-    
-        private static string DecodeFromBase64(string inputTextInBytes)
-        {
-            var textInByteToString = Convert.FromBase64String(inputTextInBytes); 
-            
-            return Encoding.UTF8.GetString(textInByteToString);         //or change "UTF8" with "Unicode (UTF16)"
         }
     }
 }
