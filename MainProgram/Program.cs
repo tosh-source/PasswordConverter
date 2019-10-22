@@ -21,9 +21,9 @@ namespace MainProgram
             var inputFileName = InputFileName();
             var textFromFile = ReadTXTfile(inputFileName);
 
-            var textAsHex = ConverToHex(textFromFile);
+            var textToPrint = ConverToHex(textFromFile);
 
-            PrintToFile(textAsHex);
+            PrintToFile(textToPrint);
         }
 
         private static void PrintToFile(StringBuilder textAsHex)
@@ -56,7 +56,7 @@ namespace MainProgram
                 choice = int.Parse(Console.ReadLine());
             } while (!(choice >= 1 && choice <= 3));
 
-            var hexAsSB = new StringBuilder();
+            var outputAsSB = new StringBuilder();
 
             if (choice == 1)
             {
@@ -64,11 +64,11 @@ namespace MainProgram
 
                 for (int i = 0; i < base64decoded.Length; i++)
                 {
-                    hexAsSB.Append((base64decoded[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
+                    outputAsSB.Append((base64decoded[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
 
                     if (i < base64decoded.Length - 1)
                     {
-                        hexAsSB.Append(' ');
+                        outputAsSB.Append(' ');
                     }
                 }
             }
@@ -76,22 +76,22 @@ namespace MainProgram
             {
                 var textInByteToString = Convert.FromBase64String(textFromFile);
 
-                hexAsSB.Append(Encoding.UTF8.GetString(textInByteToString));  //or change "UTF8" with "Unicode (UTF16)"
+                outputAsSB.Append(Encoding.UTF8.GetString(textInByteToString));  //or change "UTF8" with "Unicode (UTF16)"
             }
             else if (choice == 3)
             {
                 for (int i = 0; i < textFromFile.Length; i++)
                 {
-                    hexAsSB.Append(((int)textFromFile[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
+                    outputAsSB.Append(((int)textFromFile[i]).ToString("X"));  //convert char to int and then to hexadecimal sum
 
                     if (i < textFromFile.Length - 1)
                     {
-                        hexAsSB.Append(' ');
+                        outputAsSB.Append(' ');
                     }
                 }
             }
 
-            return hexAsSB;
+            return outputAsSB;
         }
 
         private static string InputFileName()
