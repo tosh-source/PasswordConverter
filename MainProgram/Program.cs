@@ -28,13 +28,23 @@ namespace MainProgram
 
         private static void PrintToFile(StringBuilder textAsHex)
         {
-            var outputToText = new StreamWriter("output (base64-to-hex_separated).txt");
-            outputToText.WriteLine(textAsHex);
-            outputToText.Close();
+            if (choice == 1 || choice == 3)
+            {
+                var outputToText = new StreamWriter("output (base64-to-hex_separated).txt");
+                outputToText.WriteLine(textAsHex);
+                outputToText.Close();
 
-            var outputToText_Separated = new StreamWriter("output (base64-to-hex).txt");
-            outputToText_Separated.WriteLine(textAsHex.ToString().Replace(" ", ""));
-            outputToText_Separated.Close();
+                var outputToText_Separated = new StreamWriter("output (base64-to-hex).txt");
+                outputToText_Separated.WriteLine(textAsHex.ToString().Replace(" ", ""));
+                outputToText_Separated.Close(); 
+            }
+            else if (choice == 2)
+            {
+                var outputToText = new StreamWriter("output (text only).txt");
+                outputToText.WriteLine(textAsHex);
+                outputToText.Close();
+            }
+
         }
 
         private static StringBuilder ConverToHex(string textFromFile)
